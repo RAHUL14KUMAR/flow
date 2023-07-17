@@ -13,7 +13,7 @@ passport.use(
       callbackURL: "/auth/google/callback",
     },
     async function (accessToken, refreshToken, profile, done) {  
-      console.log(profile);
+      done(null, profile);
       try{
         let existingUser = await User.findOne({email:profile.emails[0].value});
          if (existingUser) {
